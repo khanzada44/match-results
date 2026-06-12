@@ -1,0 +1,63 @@
+<div class="results-container">
+  <header class="page-header">
+    <h1>Match Results</h1>
+  </header>
+  
+  <div class="filters-section">
+    <mat-form-field appearance="outline" class="league-select">
+      <mat-label>League</mat-label>
+      <mat-select 
+        [value]="matchService.selectedLeagueId()" 
+        (selectionChange)="onLeagueChange($event.value)">
+        @for (league of leagues; track league.id) {
+          <mat-option [value]="league.id">
+            <span class="league-option">{{ league.name }}</span>
+          </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    
+
+    <app-search-box 
+      [searchValue]="currentSearchTerm()"
+      [isLoading]="matchService.loading()"
+      (searchChange)="onSearch($event)"
+    />
+  </div>
+
+  <div class="kpi-section">
+    <app-kpi-tile label="Total Matches" [value]="matchService.kpis().totalMatches" />
+    <app-kpi-tile label="Total Goals" [value]="matchService.kpis().totalGoals" />
+    <app-kpi-tile label="Avg Goals/Match" [value]="matchService.kpis().avgGoals" />
+  </div>
+  
+
+  @let loadingState = matchService.loading();
+  @let errorState = matchService.error();
+  @let matches = matchService.filteredMatches();
+  
+  @if (loadingState) {
+    <div class="state-container loading">
+      <mat-spinner diameter="48"></mat-spinner>
+      <p>Loading matches...</p>
+    </div>
+  } @else if (errorState) {
+    <div class="state-container error">
+      <mat-icon>error_outline</mat-icon>
+      <p>{{ errorState }}</p>
+      <button mat-raised-button color="primary" (click)="retry()">Retry</button>
+    </div>
+  } @else if (matches.length === 0) {
+    <div class="state-container empty">
+      <mat-icon>sports_soccer</mat-icon>
+      <p>No matches found</p>
+      <p class="hint">Try changing league or search term</p>
+    </div>
+  } @else {
+    <div class="matches-list">
+      @for (match of matches; track match.idEvent) {
+        <app-match-card [match]="match" />
+      }
+    </div>
+  }
+</div>

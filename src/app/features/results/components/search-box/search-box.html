@@ -1,0 +1,26 @@
+    <mat-form-field appearance="outline" class="search-box-field">
+      <mat-label>Search by team name...</mat-label>
+      <input
+        matInput
+        type="text"
+        [value]="searchValue()"
+        (input)="onInput($event)"
+        (keyup)="onKeyUp($event)"
+        [disabled]="isLoading()"
+        autocomplete="off"
+      />
+      
+      @if (searchValue() && !isLoading()) {
+        <button mat-icon-button matSuffix (click)="clearSearch()" type="button" aria-label="Clear search">
+          <mat-icon>close</mat-icon>
+        </button>
+      }
+      
+      @if (isLoading()) {
+        <mat-spinner matSuffix diameter="20" mode="indeterminate"></mat-spinner>
+      }
+      
+      @if (!searchValue() && !isLoading()) {
+        <mat-icon matSuffix>search</mat-icon>
+      }
+    </mat-form-field>

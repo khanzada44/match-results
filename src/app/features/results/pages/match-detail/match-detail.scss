@@ -1,0 +1,157 @@
+.detail-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.detail-header {
+  margin-bottom: 24px;
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.detail-card {
+  padding: 24px;
+}
+
+// Score Section
+.score-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  margin: 32px 0;
+  padding: 24px;
+  background: #f5f5f5;
+  border-radius: 12px;
+}
+
+.team {
+  flex: 1;
+  text-align: center;
+}
+
+.team-name {
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.score {
+  font-size: 48px;
+  font-weight: bold;
+  color: #3f51b5;
+}
+
+.vs {
+  font-size: 24px;
+  font-weight: bold;
+  color: #999;
+}
+
+// Details Section
+.details-section {
+  margin: 24px 0;
+  padding: 20px;
+  background: #fafafa;
+  border-radius: 8px;
+}
+
+.details-section h3 {
+  color: #3f51b5;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #3f51b5;
+}
+
+.detail-row {
+  display: flex;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.detail-row .label {
+  width: 100px;
+  font-weight: bold;
+  color: #666;
+}
+
+.detail-row .value {
+  flex: 1;
+  color: #333;
+}
+
+// Thumbnail Section
+.thumbnail-section {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.match-thumb {
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+// Error State
+.error-card {
+  text-align: center;
+  padding: 48px 24px;
+}
+
+.not-found mat-icon {
+  font-size: 64px;
+  width: 64px;
+  height: 64px;
+  color: #f44336;
+  margin-bottom: 16px;
+}
+
+.not-found h2 {
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.not-found p {
+  color: #666;
+  margin-bottom: 24px;
+}
+
+// Responsive
+@media (max-width: 600px) {
+  .detail-container {
+    padding: 16px;
+  }
+  
+  .detail-card {
+    padding: 16px;
+  }
+  
+  .score-section {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .team {
+    width: 100%;
+  }
+  
+  .vs {
+    order: -1;
+  }
+  
+  .detail-row {
+    flex-direction: column;
+  }
+  
+  .detail-row .label {
+    width: 100%;
+    margin-bottom: 4px;
+  }
+}

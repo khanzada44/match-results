@@ -1,0 +1,30 @@
+<mat-card class="match-card">
+  <mat-card-content>
+    <div class="match-header">
+      <span class="league">{{ match.strLeague }}</span>
+      <span class="date">{{ formatDate(match.dateEvent) }}</span>
+    </div>
+    
+    <div class="match-teams">
+      <div class="team home">
+        <span class="team-name">{{ match.strHomeTeam }}</span>
+      </div>
+      
+      <div class="score">
+        <span class="home-score">{{ match.intHomeScore || 0 }}</span>
+        <span class="separator">-</span>
+        <span class="away-score">{{ match.intAwayScore || 0 }}</span>
+      </div>
+      
+      <div class="team away">
+        <span class="team-name">{{ match.strAwayTeam }}</span>
+      </div>
+    </div>
+  </mat-card-content>
+  
+  <mat-card-actions align="end">
+    <button mat-button [routerLink]="['/results', match.idEvent]">
+      View Details 
+    </button>
+  </mat-card-actions>
+</mat-card>

@@ -1,0 +1,90 @@
+<div class="detail-container">
+  <div class="detail-header">
+    <button mat-button (click)="goBack()" class="back-button">
+      <mat-icon>arrow_back</mat-icon> Back to Results
+    </button>
+  </div>
+  
+  @if (match) {
+    <mat-card class="detail-card">
+      <mat-card-header>
+        <mat-card-title>
+          <h1>{{ match.strHomeTeam }} vs {{ match.strAwayTeam }}</h1>
+        </mat-card-title>
+        <mat-card-subtitle>
+          <span class="league">{{ match.strLeague }}</span>
+          <span class="date">{{ formatDate(match.dateEvent) }}</span>
+        </mat-card-subtitle>
+      </mat-card-header>
+      
+      <mat-card-content>
+        <div class="score-section">
+          <div class="team home-team">
+            <span class="score">{{ match.intHomeScore || 0 }}</span>
+            <span class="team-name">{{ match.strHomeTeam }}</span>
+          </div>
+          <div class="vs">VS</div>
+          <div class="team away-team">
+            <span class="score">{{ match.intAwayScore || 0 }}</span>
+            <span class="team-name">{{ match.strAwayTeam }}</span>
+          </div>
+        </div>
+        
+        <!-- Match Details -->
+        <div class="details-section">
+          <h3>Match Details</h3>
+          
+          <div class="detail-row">
+            <span class="label">Event:</span>
+            <span class="value">{{ match.strEvent }}</span>
+          </div>
+          
+          @if (match.strVenue) {
+            <div class="detail-row">
+              <span class="label">Venue:</span>
+              <span class="value">{{ match.strVenue }}</span>
+            </div>
+          }
+          
+          @if (match.strSeason) {
+            <div class="detail-row">
+              <span class="label">Season:</span>
+              <span class="value">{{ match.strSeason }}</span>
+            </div>
+          }
+          
+          <div class="detail-row">
+            <span class="label">Date:</span>
+            <span class="value">{{ formatDate(match.dateEvent) }}</span>
+          </div>
+        </div>
+        
+        <!-- Thumbnail -->
+        @if (match.strThumb) {
+          <div class="thumbnail-section">
+            <img [src]="match.strThumb" [alt]="match.strEvent" class="match-thumb">
+          </div>
+        }
+      </mat-card-content>
+      
+      <mat-card-actions align="end">
+        <button mat-raised-button color="primary" (click)="goBack()">
+          Back to Matches
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  } @else {
+    <mat-card class="error-card">
+      <mat-card-content>
+        <div class="not-found">
+          <mat-icon>error_outline</mat-icon>
+          <h2>Match Not Found</h2>
+          <p>The match you're looking for doesn't exist or has been removed.</p>
+          <button mat-raised-button color="primary" routerLink="/results">
+            Go to Results
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  }
+</div>

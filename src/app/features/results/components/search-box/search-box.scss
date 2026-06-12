@@ -1,0 +1,43 @@
+.search-box-field {
+      width: 100%;
+      min-width: 250px;
+    }
+    
+    .search-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 8px;
+      color: #666;
+      opacity: 0.6;
+      cursor: pointer;
+    }
+    
+    :host {
+      display: block;
+      width: 100%;
+    }
+    
+    /* Material form field customization */
+    ::ng-deep .mat-mdc-form-field-flex {
+      align-items: center;
+    }
+    
+    ::ng-deep .mat-mdc-form-field-prefix {
+      top: 0 !important;
+      margin-right: 8px;
+    }
+    
+    /* Dark mode support */
+    @media (prefers-color-scheme: dark) {
+      .search-icon {
+        color: #999;
+      }
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .search-box-field {
+        min-width: 100%;
+      }
+    }
